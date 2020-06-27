@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"start":"webpack --mode=development",
-	"build":"webpack --mode=production",
-	"dev-server":"webpack-dev-server"
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "dev-server": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-jsx": "^3.3.0"
