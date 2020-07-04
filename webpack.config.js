@@ -9,7 +9,7 @@ module.exports = {
 				loader: "babel-loader",
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/i,
+				test: /\.(jpe?g|mp3|png|gif|svg)$/i,
 				loader: "file-loader",
 			},
 		],
