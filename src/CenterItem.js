@@ -1,17 +1,17 @@
 import React from "react";
 
-export default function Subtitle(props) {
+export default function CenterItem(props) {
 	return (
 		<div className="container">
 			{props.children}
 			<style jsx>{`
 				.container {
-					position: fixed;
-					bottom: 0;
 					width: 100%;
-					text-align: center;
-					padding: 1rem 0;
-					font-size: 1.5rem;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
 				}
 			`}</style>
 		</div>
