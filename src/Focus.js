@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CenterItem(props) {
+export default function Focus(props) {
 	return (
 		<div className="container">
 			{props.children}
