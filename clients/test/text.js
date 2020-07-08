@@ -2,7 +2,8 @@ import draw from "../../src/functions/draw";
 
 import kado from "./kado.jpg";
 import bgGrid from "./bg.jpg";
-const rehat = "rehat.mp3";
+import rehat from "./rehat.mp3";
+import ilysm from "./i like you so much.mp3";
 
 export default draw(`
 
@@ -28,7 +29,8 @@ BG
 3-10 __ ${bgGrid}
 
 MUSIC
-6-3600 __ ${rehat}
+0-15 __ ${rehat}
+15-30 __ ${ilysm}
 
 CREDIT
 dimas

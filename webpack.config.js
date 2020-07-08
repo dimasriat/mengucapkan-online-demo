@@ -14,6 +14,9 @@ module.exports = {
 			},
 		],
 	},
+	plugins: [
+		new HtmlWebpackPlugin()
+	],
 	output: {
 		path: `${__dirname}/public`,
 		filename: "mengucapkan-online.js",
