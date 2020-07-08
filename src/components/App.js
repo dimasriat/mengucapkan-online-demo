@@ -5,7 +5,7 @@ import Focus from "./Focus";
 import Step from "./Step";
 import Item from "./Item";
 
-import draw from "../data/text";
+import draw from "../../clients/test/text";
 
 const pauseBreaks = draw["FOCUS"]
 	.filter((item) => item.type === "button")

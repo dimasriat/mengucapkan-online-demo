@@ -1,7 +1,7 @@
-import draw from "./draw";
-import kado from "../assets/images/kado.jpg";
-import bgGrid from "../assets/images/bg.jpg";
-// const bgGrid = "bg.jpg";
+import draw from "../../src/functions/draw";
+
+import kado from "./kado.jpg";
+import bgGrid from "./bg.jpg";
 const rehat = "rehat.mp3";
 
 export default draw(`

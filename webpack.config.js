@@ -16,7 +16,7 @@ module.exports = {
 	},
 	output: {
 		path: `${__dirname}/public`,
-		filename: "hbd-gesti.js",
+		filename: "mengucapkan-online.js",
 	},
 	devtool: "cheap-module-eval-source-map",
 	devServer: {
