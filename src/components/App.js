@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import Subtitle from "./Subtitle";
 import Focus from "./Focus";
@@ -6,43 +6,28 @@ import Step from "./Step";
 import Item from "./Item";
 import BgImage from "./BgImage";
 import Text from "./Text";
-
-import draw from "../../clients/";
-
-// const music = draw["MUSIC"].map((item) => new Audio(item.music));
-
-const pauseBreaks = draw["FOCUS"]
-	.filter((item) => item.type === "button")
-	.map((item) => item.when[0]);
-
-function PlayMusic(props) {
-	useEffect(() => {
-		props.music.play();
-		return () => {
-			props.music.pause();
-		};
-	}, []);
-	return <></>;
-}
+import PlayMusic from "./PlayMusic";
 
 export default function App(props) {
+	const { Draw } = props;
+
 	const [step, setStep] = useState(0);
 	useEffect(() => {
-		if (pauseBreaks.includes(step)) return;
+		if (Draw["PAUSE_BREAK"].includes(step)) return;
 		setTimeout(() => {
 			setStep((s) => s + 1);
 		}, 1000);
 	}, [step]);
 
-	const [music, setMusic] = useState(
-		draw["MUSIC"].map((item) => new Audio(item.music))
+	const [music] = useState(
+		Draw["MUSIC"].map((item) => new Audio(item.music))
 	);
 
 	return (
 		<>
 			{/* FOCUS AREA */}
 			<Focus>
-				{draw["FOCUS"].map((item, index) => (
+				{Draw["FOCUS"].map((item, index) => (
 					<Step key={index} step={step} when={item.when}>
 						<Item {...item} setStep={setStep} />
 					</Step>
@@ -51,7 +36,7 @@ export default function App(props) {
 
 			{/* SUBTITLE AREA */}
 			<Subtitle>
-				{draw["SUBTITLE"].map((item, index) => (
+				{Draw["SUBTITLE"].map((item, index) => (
 					<Step key={index} step={step} when={item.when}>
 						<Text {...item} />
 					</Step>
@@ -59,9 +44,9 @@ export default function App(props) {
 			</Subtitle>
 
 			{/* BACKGROUND HANDLER */}
-			{draw["BG"].map((item, index) => (
+			{Draw["BG"].map((item, index) => (
 				<Step key={index} step={step} when={item.when}>
-					<BgImage src={item.background} />
+					<BgImage src={item.background} style={item.style} />
 				</Step>
 			))}
 
@@ -69,30 +54,11 @@ export default function App(props) {
 			 * MUSIC HANDLER
 			 * but the music has been loaded in this components (App.js)
 			 */}
-			{draw["MUSIC"].map((item, index) => (
+			{Draw["MUSIC"].map((item, index) => (
 				<Step key={index} step={step} when={item.when}>
 					<PlayMusic music={music[index]} />
 				</Step>
 			))}
-			<style jsx global>{`
-				* {
-					font-family: sans-serif;
-					box-sizing: border-box;
-				}
-				html,
-				body,
-				#root {
-					width: 100%;
-					height: 100%;
-					margin: 0;
-					padding: 0;
-					background-color: black;
-					color: white;
-				}
-				#root {
-					padding: 0 0.5rem;
-				}
-			`}</style>
 		</>
 	);
 }

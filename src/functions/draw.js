@@ -1,4 +1,4 @@
-export default function draw(raw) {
+export default function drawGenerate(raw) {
 	let DrawObject = {};
 
 	raw.trim()
@@ -9,41 +9,37 @@ export default function draw(raw) {
 			DrawObject[type] = [...item.filter((str) => str != type)];
 		});
 
-	/**
-	 * parsing the SUBTITLE property
-	 */
 	DrawObject["SUBTITLE"] = DrawObject["SUBTITLE"].map((item) => {
 		const [time, text, style] = item.split(" __ ");
 		const when = time.split("-").map((txt) => parseInt(txt));
-		return { when, text, style};
+		return { when, text, style };
 	});
-	/**
-	 * parsing the FOCUS property
-	 */
+	
 	DrawObject["FOCUS"] = DrawObject["FOCUS"].map((item) => {
 		const [time, type, asset, style] = item.split(" __ ");
 		const when = time.split("-").map((txt) => parseInt(txt));
 		return { when, type, asset, style };
 	});
-	/**
-	 * parsing the BG property
-	 */
+	
 	DrawObject["BG"] = DrawObject["BG"].map((item) => {
-		const [time, background] = item.split(" __ ");
+		const [time, background, style] = item.split(" __ ");
 		const when = time.split("-").map((txt) => parseInt(txt));
-		return { when, background };
+		return { when, background, style };
 	});
-	/**
-	 * parsing the MUSIC property
-	 */
+	
 	DrawObject["MUSIC"] = DrawObject["MUSIC"].map((item) => {
 		const [time, music] = item.split(" __ ");
 		const when = time.split("-").map((txt) => parseInt(txt));
 		return { when, music };
 	});
+
+	// DrawObject["ANIMATION"] = DrawObject["ANIMATION"].map(item => item.trim()).join('');
+
+	DrawObject["PAUSE_BREAK"] = DrawObject["FOCUS"]
+		.filter((item) => item.type === "button")
+		.map((item) => item.when[0]);
 	/**
 	 * returning the function with object
 	 */
 	return DrawObject;
 }
-

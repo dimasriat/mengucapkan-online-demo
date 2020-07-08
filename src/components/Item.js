@@ -2,7 +2,22 @@ import React from "react";
 
 export default function Item(props) {
 	if (props.type === "picture") {
-		return <img src={props.asset} />;
+		return (
+			<div className="container">
+				<img src={props.asset} />
+				<style jsx>{`
+					.container {
+						background-color: white;
+						border: 1px solid black;
+						padding: 0.5rem 0.5rem 2rem;
+						box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+					}
+					img {
+						border: 1px solid black;
+					}
+				`}</style>
+			</div>
+		);
 	}
 	if (props.type === "button") {
 		return (

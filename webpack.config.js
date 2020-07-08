@@ -9,14 +9,11 @@ module.exports = {
 				loader: "babel-loader",
 			},
 			{
-				test: /\.(jpe?g|mp3|png|gif|svg)$/i,
+				test: /\.(jpe?g|mp3|png|gif|svg|ttf)$/i,
 				loader: "file-loader",
 			},
 		],
 	},
-	plugins: [
-		new HtmlWebpackPlugin()
-	],
 	output: {
 		path: `${__dirname}/public`,
 		filename: "mengucapkan-online.js",
